@@ -38,10 +38,10 @@ Vagrant.configure("2") do |config|
     devkit_advanced.vm.provision "shell", path: "devkit_advanced.sh"
 
 	# For build new Vagrant box
-	devkit_advanced.vm.box = "devkit"
+	#devkit_advanced.vm.box = "devkit"
 
 	# For using cloud ready Vagrant box
-	#devkit_advanced.vm.box = "erez111/devkit"
-    #devkit_advanced.vm.box_version = "0.0.10"
+	devkit_advanced.vm.box = "erez111/devkit"
+    devkit_advanced.vm.box_version = "0.0.10"
   end
 end
