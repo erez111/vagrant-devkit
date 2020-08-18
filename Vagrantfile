@@ -1,6 +1,6 @@
 # Pick your preferred virtual machine (or you flag --provider=[PROVIDER NAME]
-#ENV['VAGRANT_DEFAULT_PROVIDER'] = "virtualbox"
-ENV['VAGRANT_DEFAULT_PROVIDER'] = "vmware_desktop"
+ENV['VAGRANT_DEFAULT_PROVIDER'] = "virtualbox"
+#ENV['VAGRANT_DEFAULT_PROVIDER'] = "vmware_desktop"
 
 Vagrant.configure("2") do |config|
   config.ssh.username = "vagrant"
