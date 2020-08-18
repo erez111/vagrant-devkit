@@ -31,9 +31,7 @@ https://www.vagrantup.com/docs
 - Vagrant box is READY for download at:
    https://app.vagrantup.com/erez111/boxes/devkit
 
-## How to use it (also for Vagrant "advanced")
-
 
 ### Tip
 It is a good practice to work with virtual machine hierarchy of with Vagrant.
-erez111/devkit can be a base machine for our use case
+erez111/devkit can be a base machine for our use case.
