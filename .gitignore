@@ -1,0 +1,5 @@
+/*.box
+/.vagrant
+/shared/*
+!/shared/.gitkeep
+
