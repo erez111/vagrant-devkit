@@ -42,6 +42,6 @@ Vagrant.configure("2") do |config|
 
 	# For using cloud ready Vagrant box
 	devkit_advanced.vm.box = "erez111/devkit"
-    devkit_advanced.vm.box_version = "0.0.10"
+    devkit_advanced.vm.box_version = "0.0.11"
   end
 end

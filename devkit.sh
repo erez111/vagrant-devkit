@@ -1,4 +1,4 @@
-# For silient mode (avoiding interactive shell) for "grub-pc" package
+# For silent mode (avoiding interactive shell) for "grub-pc" package
 echo "set grub-pc/install_devices /dev/sda" | debconf-communicate
 
 apt-get -y update && apt-get -y upgrade
@@ -7,9 +7,6 @@ apt-get -y install nano curl gedit net-tools
 
 # Before installing the guest additions, you will need the linux kernel headers and the basic developer tools
 #sudo apt-get install linux-headers-$(uname -r) build-essential dkms
-
-
-
 #apt-get -y install openssh-server # Irrelevant for Vagrant
 #ufw disable # Irrelevant for Vagrant
 
@@ -25,8 +22,13 @@ sudo add-apt-repository \
    stable"
 sudo apt-get -y update
 sudo apt-get -y install docker-ce docker-ce-cli
-sudo usermod -aG docker devkit
-
+# Allow docker to run "vagrant" user
+sudo groupadd docker # Create the docker group (if not exists)
+sudo usermod -aG docker $USER # Add your user to the docker group
+newgrp docker # Activate the changes to group
+sudo chgrp docker $(which docker) # Changes the group of the docker binary to the docker group
+sudo chmod g+s $(which docker) # Enables the setgid flag
+# /Allow docker to run "vagrant" user
 
 # Install docker-compose
 sudo curl -L https://github.com/docker/compose/releases/download/1.26.2/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
@@ -73,13 +75,13 @@ apt -y install maven
 mvn -version
 # /Install maven
 
-# Install Anaconda for Python 3 (in Slient mode)
+# Install Anaconda for Python 3 (in Silent mode)
 wget https://repo.anaconda.com/archive/Anaconda3-2020.07-Linux-x86_64.sh -O ~/anaconda.sh
 bash ~/anaconda.sh -b -p /home/vagrant/anaconda
 echo "export PATH=/home/vagrant/anaconda/bin:$PATH" >> /home/vagrant/.bashrc
 source ~/.bashrc
 conda config --set auto_activate_base false
-# /Install Anaconda for Python 3 (in Slient mode)
+# /Install Anaconda for Python 3 (in Silent mode)
 
 # Install python 3.8 ^
 python --version #it should show python 3.7.4 or above
